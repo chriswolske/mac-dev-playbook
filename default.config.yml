@@ -6,16 +6,29 @@ configure_terminal: true
 configure_osx: true
 
 # Set to 'true' to configure the Dock via dockutil.
-configure_dock: false
-dockitems_remove: []
-# - Launchpad
-# - TV
-# - Podcasts
-# - 'App Store'
-dockitems_persist: []
-# - name: "Sublime Text"
-#   path: "/Applications/Sublime Text.app/"
-#   pos: 5
+configure_dock: true
+dockitems_remove:
+  - Launchpad
+  - TV
+  - Podcasts
+  - 'App Store'
+  - Messages
+  - Mail
+  - Maps
+  - Photos
+  - FaceTime
+  - Calendar
+  - Contacts
+  - Reminders
+  - Notes
+  - Music
+  - News
+  - Safari
+
+dockitems_persist:
+  - name: "Sublime Text"
+    path: "/Applications/Sublime Text.app/"
+    pos: 5
 
 configure_sudoers: false
 sudoers_custom_config: ''
@@ -24,11 +37,13 @@ sudoers_custom_config: ''
 #   # Allow users in admin group to use sudo with no password.
 #   %admin ALL=(ALL) NOPASSWD: ALL
 
-dotfiles_repo: https://github.com/geerlingguy/dotfiles.git
+dotfiles_repo: ~/code/geerlingguy/dotfiles
+               # https://github.com/geerlingguy/dotfiles.git
 dotfiles_repo_accept_hostkey: true
 dotfiles_repo_local_destination: ~/Development/GitHub/dotfiles
 dotfiles_files:
   - .zshrc
+  - .aliases
   - .gitignore
   - .inputrc
   - .osx
@@ -36,14 +51,14 @@ dotfiles_files:
 
 homebrew_installed_packages:
   # - ansible # Installed via Pip.
-  - autoconf
+  #- autoconf
   - bash-completion
-  - doxygen
-  - gettext
-  - gifsicle
+  #- doxygen
+  #- gettext
+  #- gifsicle
   - git
   - github/gh/gh
-  - go
+  #- go
   - gpg
   - httpie
   - iperf
@@ -51,12 +66,12 @@ homebrew_installed_packages:
   - sqlite
   - mcrypt
   - nmap
-  - node
-  - nvm
-  - php
+  #- node
+  #- nvm
+  #- php
   - ssh-copy-id
-  - cowsay
-  - readline
+  #- cowsay
+  #- readline
   - openssl
   - pv
   - wget
@@ -69,17 +84,17 @@ homebrew_taps:
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
-  - chromedriver
+  #- chromedriver
   - docker
-  - dropbox
-  - firefox
+  #- dropbox
+  #- firefox
   - google-chrome
-  - handbrake
+  #- handbrake
   - licecap
-  - sequel-ace
-  - slack
+  #- sequel-ace
+  #- slack
   - sublime-text
-  - transmit
+  #- transmit
 
 # See `geerlingguy.mas` role documentation for usage instructions.
 mas_installed_apps: []
@@ -103,7 +118,9 @@ npm_packages: []
 # - name: webpack
 #   state: present # present/absent/latest, default: present
 #   version: "^2.6" # default: N/A
-pip_packages: []
+pip_packages:
+  - name: glances
+    state: present
 # - name: mkdocs
 #   state: present # present/absent/latest, default: present
 #   version: "0.16.3" # default: N/A
