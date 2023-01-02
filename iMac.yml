@@ -1,0 +1,11 @@
+- name: My iMac customizations
+  gather_facts: false
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Add MacBook to hosts
+      become: true
+      lineinfile: 
+        path: /etc/hosts
+        regex: 'MacBook'
+        line: 192.168.99.2  MacBook  c02dr8gtmd6n
